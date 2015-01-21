@@ -8,8 +8,30 @@
     <script src="./mobile_check.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            setTimeout(function () { window.location = "https://itunes.apple.com/ru/app/twitter/id333903271"; }, 25);
-            window.location = "twitter://timeline";
+            var timeout;
+
+            function preventPopup() {
+                clearTimeout(timeout);
+                timeout = null;
+                window.removeEventListener('pagehide', preventPopup);
+            }
+
+            function openApp() {
+                $('<iframe />')
+                        .attr('src', "twitter://timeline")
+                        .attr('style', 'display:none;')
+                        .appendTo('body');
+
+                timeout = setTimeout(function() {
+                    window.location = "https://itunes.apple.com/ru/app/twitter/id333903271";
+                }, 500);
+                window.addEventListener('pagehide', preventPopup);
+            }
+
+            openApp();
+
+//            setTimeout(function () { window.location = "https://itunes.apple.com/ru/app/twitter/id333903271"; }, 25);
+//            window.location = "twitter://timeline";
         });
     </script>
 </head>
