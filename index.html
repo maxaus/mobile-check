@@ -17,6 +17,7 @@
             }
 
             function openApp() {
+                window.addEventListener('pagehide', preventPopup);
                 $('<iframe />')
                         .attr('src', "twitter://timeline")
                         .attr('style', 'display:none;')
@@ -25,7 +26,6 @@
                 timeout = setTimeout(function() {
                     window.location = "https://itunes.apple.com/ru/app/twitter/id333903271";
                 }, 25);
-                window.addEventListener('pagehide', preventPopup);
             }
 
             openApp();
