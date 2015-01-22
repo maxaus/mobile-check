@@ -5,12 +5,16 @@ $(document).ready(function() {
             window.location = "twitter://";
         }
         else if (isAndroid()) {
-            alert("Android");
+            debug("Android!");
             window.location = "intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end";
         }
     }, 5000);
 
 });
+
+function debug(txt) {
+    $('body').append("<div style='width:300px;background:orange;padding:3px;font-size:13px'>" + txt + "</div>");
+}
 
 function isIOS() {
     return /iPhone|iPod/i.test(navigator.userAgent);
