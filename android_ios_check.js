@@ -5,7 +5,7 @@ $(document).ready(function() {
             window.location = "twitter://";
         }
         else if (isAndroid()) {
-            window.open('intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end', '_blank');
+            window.location = "intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end";
         }
     }, 5000);
 
